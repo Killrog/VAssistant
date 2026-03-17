@@ -1,0 +1,10 @@
+*.toc
+*.zip
+*.pyc
+*.pyz
+*.spec
+*.pyd
+*.dll
+voiceenv/
+sounds/
+test/

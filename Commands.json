@@ -1,0 +1,60 @@
+{
+  
+
+    "hello": {
+      "type": "text",
+      "response": "How can I assist you today?"
+    },
+
+
+    "steam": {
+      "type": "exe",
+      "path": "D:\\Spiele (neu)\\steam\\steam.exe",
+      "response": "Opening Steam."
+    },
+    "close steam": {
+      "type": "close",
+      "process": "steam.exe",
+      "response": "closing steam."
+    },
+
+    
+    "discord": {
+      "type": "exe",
+      "path": "C:\\Users\\Alexa\\AppData\\Local\\Discord\\app-1.0.9225\\Discord.exe",
+      "response": "Opening Discord."
+    },    
+    "close discord": {
+      "type": "close",
+      "process": "Discord.exe",
+      "response": "Closing Discord."
+    },
+
+
+    "bnet": {
+      "type": "exe",
+      "path": "D:\\Spiele (neu)\\Blizzard\\Desktop App\\Battle.net\\Battle.net.exe",
+      "response": "Opening bnet."
+    },    
+    "close bnet": {
+      "type": "close",
+      "process": "Battle.net.exe",
+      "response": "Closing bnet."
+    },
+
+    "dota": {
+      "type": "exe",
+      "path": "D:\\Spiele (neu)\\steam\\steamapps\\common\\dota 2 beta\\game\\bin\\win64\\dota2.exe",
+      "response": "Opening Dota 2."
+    },    
+    "close dota": {
+      "type": "close",
+      "process": "dota2.exe",
+      "response": "Closing Dota 2."
+    }
+
+
+    
+
+
+}
