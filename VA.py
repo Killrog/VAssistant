@@ -5,7 +5,7 @@ import subprocess
 #python -m PyInstaller --onefile my_assistant.py ... to create new exe 
 #Line to read json for useable commands
 #. voiceenv\Scripts\activate to activate the venv in case its not showing in BASH terminal
-#no clue why this time I need a . before it but that works so idcpip i
+#no clue why this time I need a . before it but that works so idc pip i
 COMMANDS = {}
 
 try:
@@ -17,15 +17,76 @@ except json.JSONDecodeError:
     print("commands.json has bad format (invalid JSON)")
     
 
+tasklist_file ="tasklist.json"
+
+def load_tasklist():
+    if not os.path.exists(tasklist_file):
+        print("No tasklist found, starting with an empty tasklist.")
+        return []
+    try:
+        with open(tasklist_file, "r",encoding="utf-8") as f:
+            print("successfully loaded tasklist.")
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
+           return []  # Return empty list if file is corrupted or can't be read
 
 
-# def add_task():
-    
+def add_task(tasklist):
+
+    print("Adding a new task.")
+
+    print("Enter task title...")
+    title = input(" Title: ").strip()
+
+    print("Enter task date (DD.MM.YYYY)...")
+    date = input(" Date: ").strip()
+
+    print("Enter task time (HH:MM)...")
+    time = input(" Time: ").strip()
+
+    print("Enter task description...")
+    description = input(" Description: ").strip()
+
+    print("Enter any custom information (optional)...")
+    custom = input(" Custom: ").strip()
+
+    task = {
+        "title": title,
+        "date": date,
+        "time": time,
+        "description": description,
+        "custom": custom
+    }
+
+    tasklist.append(task)
+    save_tasklist(tasklist)
+    print("task added successfully.")
 
 
-# def manage_tasks():
 
-# def remove_task():
+#def view_tasklist():
+
+#def edit_tasklist():
+
+#def remove_task():
+
+def save_tasklist(tasks): 
+    try: 
+        with open(tasklist_file,"w", encoding="utf-8") as f:
+           json.dump(tasks,f , indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"Error saving tasklist: {e}")
+
+
+
+
+
+
+
+
+
+
+
 
 
 #   -   -   -  test for "bootup protocol    -   -   -"
@@ -104,6 +165,10 @@ def run_assistant():
             bootup_protocol()
             continue
 
+        elif command.lower() in ["add task","add"]:             
+            add_task(tasklist)
+            continue
+
         if not command:
             continue  # Skip empty input
 
@@ -124,5 +189,7 @@ def run_assistant():
 #if app exists somehow let users set apps themselves for bootup AND singular app starts
 
 if __name__ == "__main__":
+    tasklist = load_tasklist()
     run_assistant()
+    
 
