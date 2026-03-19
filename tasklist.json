@@ -1,19 +1,5 @@
 [
   {
-    "title": "Interview",
-    "date": "21.03.2026",
-    "time": "14:00",
-    "description": "interview",
-    "custom": "*Company name*"
-  },
-  {
-    "title": "test title",
-    "date": "test date",
-    "time": "test time",
-    "description": "test desc",
-    "custom": "test custom"
-  },
-  {
     "title": "test",
     "date": "test",
     "time": "test",

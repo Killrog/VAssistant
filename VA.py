@@ -50,6 +50,8 @@ def add_task(tasklist):
     print("Enter any custom information (optional)...")
     custom = input(" Custom: ").strip()
 
+    
+
     task = {
         "title": title,
         "date": date,
@@ -64,11 +66,28 @@ def add_task(tasklist):
 
 
 
-#def view_tasklist():
+def view_tasklist():
+    print(tasklist)
 
-#def edit_tasklist():
+# def edit_task():
 
-#def remove_task():
+#     variable = input()
+
+#     for task in tasklist:
+#         if task.get == variable
+
+def remove_task():
+    
+    task_title = input("Enter task title to delete task: ").strip()
+
+    for task in tasklist:
+        if task.get("title") == task_title:
+            tasklist.remove(task)
+            save_tasklist(tasklist)
+            print(f"succesfully removed task {task}")
+            return
+            
+            
 
 def save_tasklist(tasks): 
     try: 
@@ -76,14 +95,6 @@ def save_tasklist(tasks):
            json.dump(tasks,f , indent=2, ensure_ascii=False)
     except Exception as e:
         print(f"Error saving tasklist: {e}")
-
-
-
-
-
-
-
-
 
 
 
@@ -169,6 +180,16 @@ def run_assistant():
             add_task(tasklist)
             continue
 
+        elif command.lower() in ["view tasklist","view"]:             
+            view_tasklist()
+            continue
+
+        elif command.lower() in ["remove task","delete task", "remove", "delete","del"]:             
+            remove_task()
+            continue
+
+
+
         if not command:
             continue  # Skip empty input
 
@@ -187,6 +208,8 @@ def run_assistant():
 #-open browser pages (preset websites or custom url inputs (advanced maybe safe urls for later quick open))
 #-Actual application maybe with graphics instead of terminal
 #if app exists somehow let users set apps themselves for bootup AND singular app starts
+#better visual when printing tasklist
+
 
 if __name__ == "__main__":
     tasklist = load_tasklist()
