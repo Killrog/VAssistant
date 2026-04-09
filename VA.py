@@ -67,8 +67,21 @@ def add_task(tasklist):
 
 
 def view_tasklist():
-    print(tasklist)
+    if tasklist:
+        for task in tasklist: 
+            print("") #one empty space for better visibilty in console       
+            print("Task Details:")
+            for data, value in task.items():
+                print(f"{data}: {value}")
+            
+            print("__________________________")#for spacing in between tasks
+            
+                
+    else:
+        print("No tasks in the list.")
 
+    
+    #print(tasklist) #print entire list
 # def edit_task():
 
 #     variable = input()
@@ -209,7 +222,7 @@ def run_assistant():
 #-Actual application maybe with graphics instead of terminal
 #if app exists somehow let users set apps themselves for bootup AND singular app starts
 #better visual when printing tasklist
-
+#add sorting to show the first task as the one closest to the current date (maybe mark ones that happened in a different color or add a special note to those)
 
 if __name__ == "__main__":
     tasklist = load_tasklist()
