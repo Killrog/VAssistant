@@ -1,6 +1,7 @@
 import os
 import json
 import subprocess
+from speech import listen_to_mic
 
 #python -m PyInstaller --onefile VA.py ... to create new exe 
 #Line to read json for useable commands
@@ -227,6 +228,12 @@ def run_assistant():
             edit_task()
             continue
 
+        elif command.lower() in ["chat"]:             
+            voice = listen_to_mic()
+            if voice:
+                print("Heard:", voice)
+            continue
+
         elif command.lower() in ["help"]:             
             help()
             continue
@@ -246,6 +253,7 @@ def help():
     print("view tasklist: Shows you the current list of tasks you set")
     print("remove task: removes specific task")
     print("edit task: changes the chosen parameter of specific task")
+    print("chat: to activate the voice recognitation (which will later have chatgpt functionality) ")
     print("(shortcut for these commands can be viewed in the code only atm)")
     print("for feedback or features that would be nice just message me directly (Alexanderhennigbusiness@outlook.de, you don't have to use my mail just use ANYTHING YOU HAVE XD)")
 
