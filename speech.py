@@ -2,7 +2,6 @@ import speech_recognition as sr
 
 
 
-
 def listen_to_mic(timeout=10, phrase_time_limit=15): 
     recognizer = sr.Recognizer()
     recognizer.pause_threshold = 0.8
